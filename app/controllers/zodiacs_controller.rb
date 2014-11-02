@@ -70,4 +70,18 @@ class ZodiacsController < ApplicationController
 
     render 'fish'
   end
+
+  def sign
+    @signname = params["the_sign"].capitalize
+    tempfortune = Zodiac.find_by({ :sign => params["the_sign"]})
+    @displayfortune = tempfortune.fortune
+  end
+
+  def creature
+    @creaturename = params["the_creature"].capitalize
+    tempfortune = Zodiac.find_by({ :creature => params["the_creature"]})
+    @signname2 = tempfortune.sign.capitalize
+    @displayfortune2 = tempfortune.fortune
+  end
+
 end
